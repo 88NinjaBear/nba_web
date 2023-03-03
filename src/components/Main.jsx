@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Profile from './Profile'
 import DataViewContainer from './DataViewContainer'
+import SearchBar from './SearchBar'
 import NBA from '../nba-client'
 
 import { DEFAULT_PLAYER_INFO } from '../constants'
@@ -30,8 +31,11 @@ export default class main extends Component {
         const { playerInfo } = this.state
         return (
             <div className='main'>
-                <Profile playerInfo={playerInfo}></Profile>
-                <DataViewContainer playerId={playerInfo.playerId}></DataViewContainer>
+                <SearchBar></SearchBar>
+                <div className='player'>
+                    <Profile playerInfo={playerInfo}></Profile>
+                    <DataViewContainer playerId={playerInfo.playerId}></DataViewContainer>
+                </div>
             </div>
         )
     }

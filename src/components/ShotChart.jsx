@@ -17,7 +17,7 @@ export default class ShotChart extends Component {
 
     componentDidUpdate() {
         console.log("shot chart update is called")
-        const { playerId, minCount } = this.props;
+        const { playerId, minCount, chartType, displayToolTip } = this.props;
 
         NBA.stats.shots({ PlayerID: playerId }).then(resp => {
             const shots_data = resp.shot_Chart_Detail.map(shot => ({
@@ -32,8 +32,8 @@ export default class ShotChart extends Component {
             const chart_court = court().width(500);
             const chart_shots = shots()
                 .shotRenderThreshold(minCount)
-                .displayToolTips(true)
-                .displayType('hexbin')
+                .displayToolTips(displayToolTip)
+                .displayType(chartType)
 
             courtSelection.call(chart_court);
             courtSelection.datum(shots_data).call(chart_shots)

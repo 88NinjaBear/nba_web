@@ -3,7 +3,7 @@ import { Slider, InputNumber, Row, Col } from 'antd'
 
 export default class CounterSlider extends Component {
     state = {
-        inputValue: 1,
+        inputValue: this.props.minCount,
     }
 
     onChange = value => {
